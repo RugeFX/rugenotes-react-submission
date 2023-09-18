@@ -1,18 +1,11 @@
 import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
-
+  const [name, setName] = useState<string>("ruge");
   return (
     <>
-      <h1 className="text-6xl text-red-700 font-bold">Vite + React</h1>
-      <div className="">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
+      <h1>Home</h1>
+      <p>Hi!, {name}!</p>
     </>
   );
 }
