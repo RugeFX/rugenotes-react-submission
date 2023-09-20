@@ -1,4 +1,5 @@
 import type Note from "../types/note";
+import { successToast } from "../utils/toasts";
 import NoteBox from "./NoteBox";
 import { motion } from "framer-motion";
 
@@ -15,6 +16,7 @@ const NoteList = ({
 
   const onDelete = (id: string | number) => {
     setNotes((prev) => prev.filter((n) => n.id !== id));
+    successToast(`Successfully deleted note with id: ${id}!`);
   };
   const onArchive = (id: string | number) => {
     setNotes((prev) => prev.map((n) => (n.id === id ? { ...n, archived: !n.archived } : n)));
