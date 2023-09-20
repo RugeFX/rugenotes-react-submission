@@ -21,7 +21,7 @@ const TabButtons = ({
             activeTab !== "notes" && "text-primary"
           } group-hover:text-background pointer-events-none transition-all duration-200`}
         />
-        <span className="pointer-events-none">Notes</span>
+        <span className="pointer-events-none hidden md:block">Notes</span>
       </button>
       <button
         className={`group ${
@@ -34,7 +34,7 @@ const TabButtons = ({
             activeTab !== "archived" && "text-primary"
           } group-hover:text-background pointer-events-none transition-all duration-200`}
         />
-        <span className="pointer-events-none">Archived</span>
+        <span className="pointer-events-none hidden md:block">Archived</span>
       </button>
     </div>
   );

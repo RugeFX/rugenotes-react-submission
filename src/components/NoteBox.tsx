@@ -1,5 +1,6 @@
+import { motion } from "framer-motion";
+import type Note from "../types/note";
 import formatDate from "../utils/formatDate";
-import { Note } from "../App";
 import { ArchiveBoxIcon, TrashIcon } from "@heroicons/react/24/outline";
 
 const NoteBox = ({
@@ -12,7 +13,13 @@ const NoteBox = ({
   onArchive: (id: string | number) => void;
 }) => {
   return (
-    <article className="text-white border-2 border-white rounded-xl overflow-hidden flex flex-col flex-wrap justify-between">
+    <motion.article
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.05 }}
+      key={note.id}
+      className="text-white border-2 border-white rounded-xl overflow-hidden flex flex-col flex-wrap justify-between"
+    >
       <div className="flex flex-col p-3">
         <span className="block text-xl text-primary font-bold">{note.title}</span>
         <span className="block text-sm opacity-60">{formatDate(note.createdAt)}</span>
@@ -20,7 +27,9 @@ const NoteBox = ({
       </div>
       <div className="h-12 w-full flex border-t-2">
         <button
-          className="w-full text-primary flex justify-center items-center hover:bg-primary hover:text-background transition-all duration-200"
+          className={`w-full flex justify-center items-center ${
+            note.archived ? "text-zinc-400 hover:bg-zinc-400" : "text-primary hover:bg-primary"
+          } hover:text-background transition-all duration-200`}
           onClick={() => onArchive(note.id)}
         >
           <ArchiveBoxIcon className="w-7 pointer-events-none" />
@@ -32,7 +41,7 @@ const NoteBox = ({
           <TrashIcon className="w-7 pointer-events-none" />
         </button>
       </div>
-    </article>
+    </motion.article>
   );
 };
 
